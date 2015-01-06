@@ -6,7 +6,6 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
@@ -14,7 +13,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
 		
-		<!--Write Metric Variables-->
+		<!--Write metric variables and names-->
 		<script type="text/javascript">
 			var value1 = "82%";
 			var value1name = "Attendance Rate";
@@ -46,16 +45,20 @@
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<script src="js/main.js"></script>
 		
-		<!--Load the AJAX API-->
+		<!--Load the AJAX API for Google charts-->
 	    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	    
+	    <!-- Script to load the Google charts-->
 	    <script type="text/javascript">
 
-      	// Load the Visualization API and the piechart package.
+      	// Load the Visualization API, chart package and table package
       	google.load('visualization', '1.0', {'packages':['corechart']});
+      	google.load("visualization", "1", {packages:["table"]});
 
       	// Set a callback to run when the Google Visualization API is loaded.
       	google.setOnLoadCallback(drawChart);
       	google.setOnLoadCallback(drawChart2);
+      	google.setOnLoadCallback(drawTable);
 
       	// Callback that creates and populates a data table,
       	// instantiates the column chart, passes in the data and
@@ -103,7 +106,7 @@
           		['Day12', .73],
           		
         	]);
-
+        	
         	// Set chart options
         	var options = {'title':'Daily Attendance Rate',
         		'width':'100%'
@@ -113,8 +116,25 @@
         	var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
        	 	chart.draw(data, options);
       	}
+      	
+      	function drawTable() {
+	        var data = new google.visualization.DataTable();
+	        data.addColumn('string', 'Student Name');
+	        data.addColumn('number', 'Number of Unexcused Absences');
+	        data.addColumn('boolean', 'Interventions In Place');
+	        data.addRows([
+		        ['Mike Tyson',  {v: 15, f: '15'}, true],
+		        ['Jim Pearson',   {v:8,   f: '8'},  false],
+		        ['Alice Hill', {v: 12, f: '12'}, true],
+		        ['Bob Dylan',   {v: 7,  f: '7'},  true]
+	        ]);
+	        
+	        // Instantiate and draw our table.	
+	        var table = new google.visualization.Table(document.getElementById('table_div'));
+			table.draw(data, {showRowNumber: true});
+      	}
+      	
     	</script>
-    		  
     </head>
     
     <body>
@@ -165,8 +185,10 @@
   		</ul>
   	</div>
 	
-	<!--Div that will hold the pie chart-->
+	<!--More information on metrics section-->
 	<div class="container">
+		
+		<!--Div that will hold the first two charts-->
 	  	<div class="row">
 	    	<div class="col-md-6">
 	    		<div id="chart_div2"></div>
@@ -175,17 +197,17 @@
 	    		<div id="chart_div"></div>
 	    	</div>
 	    </div>
-	    <div class="row">
-	    	
-		</div>
+	    
+	    <!--Div that will hold the table-->
+	    <div id="table_div"></div>
+		
     </div>		
    	<hr>
 	
 	<!--Footer-->
     <footer>
-    	<p>&copy; The Next Step PCS 2014</p>
-    </footer>
-    </div> <!-- /container -->        
+    	<p>&copy; The Next Step PCS 2015</p>
+    </footer>     
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
