@@ -8,3 +8,26 @@
 	padding-bottom: 30px;
 	
 }
+
+h1 {
+    font-family: 'Arvo', Georgia, Times, serif;
+    font-size: 80px;
+}
+
+h2 {
+    font-family: 'Arvo', Georgia, Times, serif;
+}
+
+h3 {
+    font-family: 'Arvo', Georgia, Times, serif;
+}
+
+h4 {
+    font-family: 'Arvo', Georgia, Times, serif;
+}
+ 
+p {
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 25px;
+}
