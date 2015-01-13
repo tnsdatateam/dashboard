@@ -191,9 +191,17 @@
 	          		['Students of Concern', 12],
 	        	]);
 	        	// Set chart options
-	        	var options = {'title':'Behaviour Concerns',
-	        	'width':'100%'
-	            	};
+	        	var options = {
+	        		title:'Behaviour Concerns',
+	        		width:'100%',
+	        		titleTextStyle:{fontName:'Arvo', fontSize:18, bold: false},
+	        		width:'100%',
+	        		legend:{position:'none'},
+					colors: ['#e0440e'],
+					hAxis:{textStyle:{fontName:'PT Sans', fontSize:15},slantedText:false},
+					vAxis:{textStyle:{fontName:'PT Sans', fontSize:15}},
+					tooltip:{textStyle:{fontName:'PT Sans', fontSize:12}}
+	            };
 	        	// Instantiate and draw our chart, passing in some options.
 	        	var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
 	       	 	chart.draw(data, options);
@@ -222,11 +230,17 @@
 	          		['Day12', .73],
 	          		
 	        	]);
-	        	
 	        	// Set chart options
-	        	var options = {'title':'Daily Attendance Rate',
-	        		'width':'100%'
-	            	};
+	        	var options = {
+	        		title:'Daily Attendance',
+	        		titleTextStyle:{fontName:'Arvo', fontSize:18, bold: false},
+	        		width:'100%',
+	        		legend:{position:'none'},
+					colors: ['#e0440e'],
+					hAxis:{textStyle:{fontName:'PT Sans', fontSize:15},slantedText:true},
+					vAxis:{textStyle:{fontName:'PT Sans', fontSize:15}},
+					tooltip:{textStyle:{fontName:'PT Sans', fontSize:12}}
+	            };
 	        	// Instantiate and draw our chart, passing in some options.
 	        	var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
 	       	 	chart.draw(data, options);
@@ -234,6 +248,7 @@
 	      	
 	      	// Create bar chart
 	      	function drawTable() {
+	      		// Create the data table.
 		        var data = new google.visualization.DataTable();
 		        data.addColumn('string', 'Student Name');
 		        data.addColumn('number', 'Number of Unexcused Absences');
@@ -244,15 +259,13 @@
 			        ['Alice Hill', {v: 12, f: '12'}, true],
 			        ['Bob Dylan',   {v: 7,  f: '7'},  true]
 		        ]);
-		        
 		        // Instantiate and draw our table.	
 		        var table = new google.visualization.Table(document.getElementById('table_div'));
-				table.draw(data, {showRowNumber: true});
+				table.draw(data, options, {showRowNumber: true});
 	      	}
       	</script>
       	
       	<!-- Script to show/hide more information with graphs for each metric categories-->
- 
  <!--
       	<script type="text/javascript">
       		// Define Funtion to hide all "More Info" containers
